@@ -15,7 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls import handler404, handler500, handler403, handler400
+from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', views.index, name='index'),
+    path('index.html', views.index, name='index'),
+    path('about.html', views.about, name='about'),
+    path('map.html', views.map, name='map'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = views.handler404
+handler500 = views.handler500
+handler403 = views.handler403
+handler400 = views.handler400
