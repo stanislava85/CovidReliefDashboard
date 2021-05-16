@@ -1,0 +1,16 @@
+<!-- mysite/templates/map.html -->
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="ratio ratio-16x9">
+            <iframe src="https://example.com" title="Folium map" >
+            some text
+            </iframe>
+          </div>
+    </div>
+</div>
+{% endblock %}
