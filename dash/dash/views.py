@@ -6,8 +6,20 @@ def index(request):
 def about(request):
     return render(request, 'about.html')
 
-def map(request):
-    return render(request, 'map.html')
+def dashboard(request):
+    return render(request, 'dashboard.html')
+
+def first_diagram(request):
+    return render(request, 'first_diagram.html')
+
+def second_diagram(request):
+    return render(request, 'second_diagram.html')
+
+def third_diagram(request):
+    return render(request, 'third_diagram.html')
+
+def bokeh(request):
+    return render(request, 'bokeh.html')
 
 def handler404(request, exception):
     return render(request, '404.html')

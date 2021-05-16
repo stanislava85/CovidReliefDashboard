@@ -25,7 +25,11 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('index.html', views.index, name='index'),
     path('about.html', views.about, name='about'),
-    path('map.html', views.map, name='map'),
+    path('dashboard.html', views.dashboard, name='dashboard'),
+    path('first_diagram.html', views.first_diagram, name='first_diagram'),
+    path('second_diagram.html', views.second_diagram, name='second_diagram'),
+    path('third_diagram.html', views.third_diagram, name='third_diagram'),
+    path('bokeh.html', views.bokeh, name='bokeh'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = views.handler404
