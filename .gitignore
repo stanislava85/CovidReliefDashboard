@@ -1,0 +1,20 @@
+# General
+.DS_Store
+**/___pycache__/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Python
+*.pyc
+
+# Database
+*.db
+*.sqlite3
+
+# Jupyter Notebook
+.ipynb_checkpoints
