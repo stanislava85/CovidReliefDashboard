@@ -3,13 +3,13 @@ import about
 import first_diagram
 import second_diagram
 import third_diagram
-import dashboard
+import folium_map
 import streamlit as st
 
 PAGES = {
     "Home": home,
     "About": about,
-    "Dashboard": dashboard,
+    "NYC Covid Map": folium_map,
     "First Diagram": first_diagram,
     "Second Diagram": second_diagram,
     "Third Diagram": third_diagram,
