@@ -10,6 +10,8 @@ matplotlib = "*"
 seaborn = "*"
 folium = "*"
 streamlit = "*"
+streamlit-folium = "*"
+certifi = "*"
 
 [dev-packages]
 
