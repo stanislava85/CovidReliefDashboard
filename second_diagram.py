@@ -34,9 +34,9 @@ def bar_1():
 
     ax1.set_xticks(x)
     ax1.set_xticklabels(labels)
-    ax1.set_xlabel('Age')
-    ax1.set_ylabel('Number of cases')
-    ax2.set_ylabel('Fatality Rate')
+    ax1.set_xlabel('Age', size=25)
+    ax1.set_ylabel('Number of cases', size=25)
+    ax2.set_ylabel('Fatality Rate', size=25)
     ax1.set_title('Infection (Number of cases) and Fatality Rate(deaths/number of cases) Per Age Group', size=35)
     # plt.legend(loc='upper right', prop={"size":20})
     ax1.legend(loc='upper left', prop={"size":20})
@@ -52,8 +52,8 @@ def bar_2():
     ax.set_xticks(x)
     ax.set_xticklabels(labels)
     ax.set_title(f'Number of cases per age group in {borough_filter[:2]}',size=35)
-    ax.set_xlabel('Age group',size=15)
-    ax.set_ylabel('Number of cases', size=15)
+    ax.set_xlabel('Age group',size=25)
+    ax.set_ylabel('Number of cases', size=25)
     ax.legend(loc='upper left',prop={"size":20})
     return fig
 
@@ -69,8 +69,10 @@ def app():
 		From this visualization we could conclude that there is no direct correlation between the\
 		number of cases per Age Group and the Fatality Rate per Age Group. This diagram proves our\
 		First Hypothesis where we have stated that the Fatality Rate increases as people\'s age\
-		increase. We see that the bar for Fatality Rate is Highest for the 75+ age group.')
+		increase. We see that the bar for Fatality Rate is the highest for the 75+ age group.')
 
     st.pyplot(bar_1())
 
+    st.write('This graph represents the distribution of COVID-19 Cases Per Age Group for Each Borough.\
+    	We need to select the Borough in order to see the Positive Cases distribution for each Age Group.')
     st.pyplot(bar_2())

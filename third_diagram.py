@@ -62,17 +62,18 @@ def graph():
 	color = ("red", "purple")
 	ax.barh(ticks, totals_boro[population],color="#f3e151")
 	ax.barh(ticks, totals_boro[user_filter], left= totals_boro[population], color="#6c3376")
-	#ax.set_title(f'Infection Rate vs Total Population per Borough {borough_filter[:2]}',size=35)
-    # ax.set_xlabel('Age group',size=15)
-    # ax.set_ylabel('Number of cases', size=15)
-    # ax.legend(loc='upper left',prop={"size":20})
+	ax.set_title(f'Number of Cases vs Total Population per Borough',size=35)
+    #ax.set_xlabel('Total Population + Number of cases',size=25)
+    #ax.legend(loc='lower right',prop={"size":20})
 	return fig
 
 def app():
     st.title('Third Diagram')
 
-    st.write(by_boro())
-    st.write(population())
+    # st.write(by_boro())
+    # st.write(population())
     st.write(join())
-
+    st.write('In this diagram we are representing the correleation between Total Population and\
+    Number of Cases per borough. We see that in boroughs where the population is higher there are\
+    more COVID-19 cases.')
     st.pyplot(graph())
