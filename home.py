@@ -1,6 +1,5 @@
 import streamlit as st
 
-
 def app():
     st.title('Home page')
 
@@ -15,4 +14,4 @@ def app():
     st.write('Proposed hypothesis 2:')
 
     st.write('Also, there is a direct correlation between the fatality rate and density of borough for the 75 + age group. A 75 + person living in a denser borough will have a higher chance of exposure and have a higher fatality than another 75 + person living in a less dense borough.')
-    
+
