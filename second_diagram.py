@@ -62,7 +62,15 @@ def app():
     st.title('Second Diagram')
     
     st.write(clean_data())
-    
+
+    st.write('For this second diagram we are showing the correlation between the Number of\
+    	COVID-19 Cases and the Fatality Rate per Age Group. We have estimated the Fatality Rate\
+    	by dividing the Death Cases to the Number of Total Case Count per each Borough and Age Group.\
+		From this visualization we could conclude that there is no direct correlation between the\
+		number of cases per Age Group and the Fatality Rate per Age Group. This diagram proves our\
+		First Hypothesis where we have stated that the Fatality Rate increases as people\'s age\
+		increase. We see that the bar for Fatality Rate is Highest for the 75+ age group.')
+
     st.pyplot(bar_1())
 
     st.pyplot(bar_2())
