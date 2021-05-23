@@ -4,7 +4,8 @@ import folium
 from folium.plugins import HeatMap
 import pandas as pd
 
-df = pd.read_csv('documents/last7days-by-modzcta.csv')
+url = "https://raw.githubusercontent.com/nychealth/coronavirus-data/master/latest/last7days-by-modzcta.csv"
+df = pd.read_csv(url)
 icon_url = 'covid-red.png'
 astoria_ditmars = [40.7644, -73.9235]
 popup = folium.Popup(min_width=5550)

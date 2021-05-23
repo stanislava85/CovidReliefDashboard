@@ -4,6 +4,7 @@ import first_diagram
 import second_diagram
 import third_diagram
 import folium_map
+import findings
 import streamlit as st
 
 PAGES = {
@@ -13,6 +14,7 @@ PAGES = {
     "First Diagram": first_diagram,
     "Second Diagram": second_diagram,
     "Third Diagram": third_diagram,
+    "Findings": findings
 
 }
 
