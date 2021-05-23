@@ -27,11 +27,20 @@ def clean_data():
     by_boro.drop(columns = ['group'], axis=1, inplace=True)
     return by_boro
 
-def population_density_fatality():
+#All  rows with citywide- the 6 rows are needed for the cases/population chart
+def pop_data():
     r = requests.get("https://data.cityofnewyork.us/resource/xywu-7bv9.json?")
     population = pd.DataFrame(json.loads(r.text))
     total = population[["borough", "_2020"]]
+    return total
+
+def five_boro():
+    total = pop_data()
     total = total.drop([0]).reset_index(drop=True)
+    return total
+
+def population_density_fatality():
+    total = five_boro()
     total["_2020"]=total._2020.astype(float)
     total["borough"]=total.borough.astype(str)
     total.loc[0, 'borough']  #there are white spaces at the front
