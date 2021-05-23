@@ -24,6 +24,8 @@ for lat, lon, zipcode, area, people_positive in points:
     ).add_to(m)
 
 def app():
+    # st.set_page_config(layout="wide")
+
     st.title('NYC Covid Map by Zipcode')
 
     folium_static(m)

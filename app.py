@@ -18,6 +18,8 @@ PAGES = {
 
 }
 
+st.set_page_config(layout="wide")
+
 st.sidebar.title('Navigation')
 selection = st.sidebar.radio("Go to", list(PAGES.keys()))
 page = PAGES[selection]
