@@ -37,7 +37,7 @@ def bar_1():
     ax1.set_xlabel('Age', size=25)
     ax1.set_ylabel('Number of cases', size=25)
     ax2.set_ylabel('Fatality Rate', size=25)
-    ax1.set_title('Infection (Number of cases) and Fatality Rate(deaths/number of cases) Per Age Group', size=35)
+    ax1.set_title(f'Infection (Number of cases) and Fatality Rate(deaths/number of cases) Per Age Group in {borough_filter[:2]}', size=35)
     # plt.legend(loc='upper right', prop={"size":20})
     ax1.legend(loc='upper left', prop={"size":20})
     ax2.legend(loc='upper right',prop={"size":20})
