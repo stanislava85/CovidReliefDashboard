@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import requests
 import json
 from matplotlib import style
-from first_diagram import pop_data
+from hypothesis_two import pop_data
 
 
 

@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt
 from matplotlib import style
-from first_diagram import clean_data
+from hypothesis_two import clean_data
 
 #Setting dataset variable with cleaned data
 group_data = clean_data()
