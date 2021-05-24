@@ -157,13 +157,18 @@ def app():
     st.write(clean_data())
     st.write('The Age filter option will isolate the corresponding row from the first dataframe that matches that age "subgroup"') 
     st.write('From the row selected: the columns containing the fatality rate of the 5 NYC boroughs will get added as a new column in the second dataframe.')
+    col1, col2 = st.beta_columns(2)
+
+    with col1:
+        st.subheader('Figure 1.1 Description')
+        st.write('In the first pie chart we are exploring the population of the five NYC boroughs. Here we can see the "Queens" and "Brooklyn" have the highest population with 2,648,452 and 2,330,295 respectively.')
+        st.pyplot(pie_1())
     
-    st.subheader('Figure 1.1 Description')
-    st.write('In the first pie chart we are exploring the population of the five NYC boroughs. Here we can see the "Queens" and "Brooklyn" have the highest population with 2,648,452 and 2,330,295 respectively.')
-    st.pyplot(pie_1())
-    st.subheader('Figure 1.2 Description')
-    st.write('From this pie chart we can conclude that the density is highest in manhattan out of the five NYC boroughs with 71,760 residents per square mile and the second most dense borough is Brooklyn with 37,397 per square mile. Based on our second hypothesis, we are expecting manhattan and queens to have the highest fatality rates because 75+ person living in a denser borough will have a higher chance of exposure and have a higher fatality than another 75+ person living in a less dense borough.')
-    st.pyplot(pie_2())
+    with col2:
+        st.subheader('Figure 1.2 Description')
+        st.write('From this pie chart we can conclude that the density is highest in manhattan out of the five NYC boroughs with 71,760 residents per square mile and the second most dense borough is Brooklyn with 37,397 per square mile. Based on our second hypothesis, we are expecting manhattan and queens to have the highest fatality rates because 75+ person living in a denser borough will have a higher chance of exposure and have a higher fatality than another 75+ person living in a less dense borough.')
+        st.pyplot(pie_2())
+    
     st.subheader('Figure 1.3 Description')
     st.write("In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the 75+ age group, however our graphs don't supprt this statement.")
     st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
@@ -184,9 +189,13 @@ def app():
         st.write(population_bar(age_filter[0]))
     elif option == age_filter[1]:
         st.header(f'Population, Density and Fatality in borough for {age_filter[1]} group')
+        st.write(population_density_fatality_filtered(age_filter[1]))
+        st.subheader('Figure 1.3 Description')
+        st.write("In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the {age_filter[0]} age group, however our graphs don't supprt this statement.")
+        st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
+        st.write("This pattern could be a result of other socioeconomic factors that we aren't taking into consideration in this research.")
         st.write(density_bar(age_filter[1]))
         st.write(population_bar(age_filter[1]))
-        st.write(population_density_fatality_filtered(age_filter[1]))
     elif option == age_filter[2]:
         st.header(f'Population, Density and Fatality in borough for {age_filter[2]} group')
         st.write(density_bar(age_filter[2]))
