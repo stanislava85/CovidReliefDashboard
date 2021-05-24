@@ -5,9 +5,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import requests
 import json
+
 plt.style.use('fivethirtyeight')
 st.set_page_config(layout="wide")
+
+
 age_filter = '75+'
+
+
 def clean_data():
     by_boro = pd.read_csv("https://raw.githubusercontent.com/nychealth/coronavirus-data/master/totals/group-data-by-boro.csv")
     by_boro.drop([12,13,14,15,16,17], inplace=True)
@@ -101,6 +106,14 @@ def density_bar():
     ax1.legend(loc='upper left')
     ax2.legend(loc='upper right')
     return fig
+
+def exp_res1():
+    data = [['Manhattan','Brooklyn','Bronx', 'Queens', 'SI'], 
+    ['Queens','Bronx','Brooklyn','SI','Manhattan']]
+    index = ['Expected', 'Result']
+    df = pd.DataFrame(data, index=index)
+    return df.transpose()
+
 def population_bar():
     data1 = total.groupby('borough')['_2020'].sum()
     data2 = total.groupby('borough')['Fatality'].sum()
@@ -118,13 +131,34 @@ def population_bar():
     ax1.legend(loc='upper left')
     ax2.legend(loc='upper right')
     return fig
+
+
+
 def app():
     st.title('First Diagram')
     
+    st.header('Fatality, Count and Deaths per age Group Dataframe')
     st.write(clean_data())
+
+    st.write('Age filter')
+
+    st.header(f'Population, Density and Fatality in borough for {age_filter} group')
     st.write(population_density_fatality())
+    st.write('The Age filter option will isolate the corresponding row from the first dataframe that matches that age "subgroup"') 
+    st.write('From the row selected: the columns containing the fatality rate of the 5 NYC boroughs will get added as a new column in the second dataframe.')
     
+    st.subheader('Figure 1.1 Description')
+    st.write('In the first pie chart we are exploring the population of the five NYC boroughs. Here we can see the "Queens" and "Brooklyn" have the highest population with 2,648,452 and 2,330,295 respectively.')
     st.pyplot(pie_1())
+    st.subheader('Figure 1.2 Description')
+    st.write('From this pie chart we can conclude that the density is highest in manhattan out of the five NYC boroughs with 71,760 residents per square mile and the second most dense borough is Brooklyn with 37,397 per square mile. Based on our second hypothesis, we are expecting manhattan and queens to have the highest fatality rates because 75+ person living in a denser borough will have a higher chance of exposure and have a higher fatality than another 75+ person living in a less dense borough.')
     st.pyplot(pie_2())
+    st.subheader('Figure 1.3 Description')
+    st.write("In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the 75+ age group, however our graphs don't supprt this statement.")
+    st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
+    st.write("This pattern could be a result of other socioeconomic factors that we aren't taking into consideration in this research.")
+    st.write(exp_res1())
     st.pyplot(density_bar())
+    st.subheader('Figure 1.4 Description')
+    st.write('From ')
     st.pyplot(population_bar())

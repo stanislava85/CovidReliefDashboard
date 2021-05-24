@@ -55,5 +55,7 @@ def app():
     Number of Cases per borough. We see that in boroughs where the population is higher there are\
     more COVID-19 cases.')
 
+	# st.write("For example we see that Brooklyn and Queens have 230,726 and 228,524 cases respectively. It is for what we can see in the graph that they are at the highest of the five (5) boroughs compared to Manhattan having only 108,485.")
+
     st.pyplot(graph())
 

@@ -33,8 +33,7 @@ def app():
                 and driven with strong work ethic and ability to thrive in team-based or individually motivated
                 settings. At her core, she is a problem solver and experimenter who’s passionate about using
                 sociological and data driven approaches to tackling projects and building meaningful products that
-                help people live better lives. She has worked in Medical billing, consumer and customer service and is
-                now looking to pivot her career path towards Data Science.
+                help people live better lives.
               </p>
             </div>
           </div>
