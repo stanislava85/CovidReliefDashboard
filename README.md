@@ -4,15 +4,19 @@
 
 - [Acknowledgement](#acknowledgement)
 - [Introduction](#introduction)
-- [Technology Used](#technology-used)
 - [Installation](#installation)
+- [Technology Used](#technology-used)
 - [Data Cleaning](#data-cleaning)
 - [Hypothesis](#hypothesis)
 - [Conclusion](#conclusion)
-- [Summary](#summary)
+- [About us](#about-us)
 
 # COVID-19 IN NYC DATA ANALYSIS
-## Our Study
+
+## Acknowledgement
+Our team would like to thank all instructors at The Knowledge House for their guidance, help, encouragement and inspiration to complete this Capstone Project. This wouldn't have been possible without you. We would also like to thank The NYC Department of Health for proving the data we used for this study. 
+
+## Introduction
 **We are tasked with looking at available information to identify those in the city with the biggest risk of covid. It is documented that elderly are the ones who are most at risk for the covid virus. By analyzing the trends of Covid-19 as it applied to how age affects mortality in NYC we will be able to reach a conclusion and prove/disprove our hypothesis.**
 
 The source of our data is [NYC Department of Health Github's Page](https://github.com/nychealth/coronavirus-data) on Covid-19 statistices, which is updated daily.
@@ -28,6 +32,7 @@ In order to run this application locally on you machine you would need to follow
 4. And finally you can run the app by typing this command: "streamlit run app.py"
 
 <br>
+
 ## Technology Stack
 In this analysis, we used python as the primary programming language because of its rich palette of tools that make data analysis a cinch. Some of the packages we used are
 | Library | Description |
@@ -53,19 +58,19 @@ The most important step to take before we get started genenrating any kind of in
 
 ## Hypothesis 1
 
-####The infection rate and fatality rate in the 75+ age group will be the highest fatality(deaths/total cases) because they are in the older age group.
+#### The infection rate and fatality rate in the 75+ age group will be the highest fatality(deaths/total cases) because they are in the older age group.
 
 ## Hypothesis 2
-####Also,there is a direct correlation between the fataly rate and density of borough for the 75+ age group. A 75+ person living in a denser borough will have a higher chance of exposure and have a higher fatality than another 75+ person living in a less dense borough.
+#### Also,there is a direct correlation between the fataly rate and density of borough for the 75+ age group. A 75+ person living in a denser borough will have a higher chance of exposure and have a higher fatality than another 75+ person living in a less dense borough.
 
 
-#### Conclusion¶
+# Conclusion¶
 
 By exploring the correlation between the Number of COVID-19 Cases and the Fatality Rate per Age Group. We were able to conclude that there is no direct correlation between the number of cases per Age Group and the Fatality Rate per Age Group. However, we were able to prove our First Hypothesis, where we have stated that the Fatality Rate increases as people\'s age increase. We saw that the number for Fatality Rate was the highest for the 75+ age group.
 
 In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of a borough for the 75+ age group, however our findings and graphs did't supprt this statement. We were able to conclude that there is no direct correlation between the fatality rate and the density of a borough for the 75+ age group. This pattern could be a result of other socioeconomic factors that we weren't taking into consideration in this research.
 
-## About us
+# About us
 | Preview                                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [<img src="./img/clariza.jpg" width="1000" />](https://i.imgur.com/0OoLaa5.png)                                                                                                                                                | Clariza is an Ambitious data science fellow committed to academic excellence. Prepared to implement diverse skill sets, technical proficiencies and new perspectives to leadership personnel. Adaptable and driven with strong work ethic and ability to thrive in team-based or individually motivated settings. At her core, she is a problem solver and experimenter who’s passionate about using sociological and data driven approaches to tackling projects and building meaningful products that help people live better lives.                    
