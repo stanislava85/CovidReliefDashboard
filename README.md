@@ -5,7 +5,7 @@
 - [Acknowledgement](#acknowledgement)
 - [Introduction](#introduction)
 - [Installation](#installation)
-- [Technology Used](#technology-used)
+- [Technology Stack](#technology-stack)
 - [Data Cleaning](#data-cleaning)
 - [Hypothesis](#hypothesis)
 - [Conclusion](#conclusion)
@@ -13,17 +13,17 @@
 
 # COVID-19 IN NYC DATA ANALYSIS
 
-## Acknowledgement
+# Acknowledgement
 Our team would like to thank all instructors at The Knowledge House for their guidance, help, encouragement and inspiration to complete this Capstone Project. This wouldn't have been possible without you. We would also like to thank The NYC Department of Health for proving the data we used for this study. 
 
-## Introduction
+# Introduction
 **We are tasked with looking at available information to identify those in the city with the biggest risk of covid. It is documented that elderly are the ones who are most at risk for the covid virus. By analyzing the trends of Covid-19 as it applied to how age affects mortality in NYC we will be able to reach a conclusion and prove/disprove our hypothesis.**
 
 The source of our data is [NYC Department of Health Github's Page](https://github.com/nychealth/coronavirus-data) on Covid-19 statistices, which is updated daily.
 
 <br>
 
-## Installation
+# Installation
 
 In order to run this application locally on you machine you would need to follow these instructions:
 1. In your terminal type:  "pip install pipenv" - this will create the enviroment
@@ -33,7 +33,7 @@ In order to run this application locally on you machine you would need to follow
 
 <br>
 
-## Technology Stack
+# Technology Stack
 In this analysis, we used python as the primary programming language because of its rich palette of tools that make data analysis a cinch. Some of the packages we used are
 | Library | Description |
 | --- | --- |
@@ -46,7 +46,7 @@ In this analysis, we used python as the primary programming language because of 
 
 These tools are well documented and come with several examples that make it easy to start using them. You can check out the linked documentation pages for more information.
 
-## Data Cleaning
+# Data Cleaning
 
 The most important step to take before we get started genenrating any kind of information from these data sources, is to first clean our data and make sure that the datasets are compatible with each other. One of the most important things we need to pay attantion to are the age groups, for some of the datasets there is missing information for the youngest (0-17), so we will fill those missing values by combining the previus age subgroups (0-4, 5-12, 13-17).
 
