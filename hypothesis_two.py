@@ -9,9 +9,7 @@ import json
 plt.style.use('fivethirtyeight')
 st.set_page_config(layout="wide")
 
-
-age_filter = '75+'
-
+age_filter = ['0-17', '12-24', '25-34', '35-44', '45-54', '55-64', '65-75', '75+']
 
 def clean_data():
     by_boro = pd.read_csv("https://raw.githubusercontent.com/nychealth/coronavirus-data/master/totals/group-data-by-boro.csv")
@@ -38,6 +36,24 @@ def pop_data():
 def five_boro():
     total = pop_data()
     total = total.drop([0]).reset_index(drop=True)
+    return total
+def population_density_fatality_filtered(filtration):
+    filt = filtration
+    total = five_boro()
+    total["_2020"]=total._2020.astype(float)
+    total["borough"]=total.borough.astype(str)
+    total.loc[0, 'borough']  #there are white spaces at the front
+    ##strip spaces
+    total['borough'] = total['borough'].str.strip()
+    #Land area in square miles per boro, taken from https://en.wikipedia.org/wiki/Boroughs_of_New_York_City
+    d = {'Bronx': 42.10, 'Brooklyn':70.82, 'Manhattan':22.83, 'Queens':108.53, 'Staten Island':58.37}
+    total['land'] = d.values()
+    total["Density"] = total["_2020"]/total["land"]
+    #Adding Fataity row per age group from clean data
+    by_boro = clean_data()
+    lst = by_boro[by_boro['subgroup']==filt][['BK_FATALITY_RATE', 'BX_FATALITY_RATE','MN_FATALITY_RATE','QN_FATALITY_RATE','SI_FATALITY_RATE']].to_dict('records')
+    fatality = lst[0].values()
+    total['Fatality'] = fatality
     return total
 def population_density_fatality():
     total = five_boro()
@@ -89,7 +105,8 @@ def pie_2():
 width = 0.25
 labels = total['borough'].values
 x = np.arange(len(labels))
-def density_bar():
+def density_bar(filtration):
+    filt = filtration
     data1 = total.groupby('borough')['Density'].sum()
     data2 = total.groupby('borough')['Fatality'].sum()
     plt.style.use('fivethirtyeight')
@@ -102,7 +119,7 @@ def density_bar():
     ax1.set_xlabel('Borough')
     ax1.set_ylabel('Density')
     ax2.set_ylabel('Fatality Rate')
-    ax1.set_title(f'Borough Density and Fatality Rate(deaths/number of cases) for {age_filter} Age Group')
+    ax1.set_title(f'Borough Density and Fatality Rate(deaths/number of cases) for {filt} Age Group')
     ax1.legend(loc='upper left')
     ax2.legend(loc='upper right')
     return fig
@@ -114,7 +131,8 @@ def exp_res1():
     df = pd.DataFrame(data, index=index)
     return df.transpose()
 
-def population_bar():
+def population_bar(filtration):
+    filt = filtration
     data1 = total.groupby('borough')['_2020'].sum()
     data2 = total.groupby('borough')['Fatality'].sum()
    
@@ -127,26 +145,66 @@ def population_bar():
     ax1.set_xlabel('Borough')
     ax1.set_ylabel('Populations (millions)')
     ax2.set_ylabel('Fatality Rate')
-    ax1.set_title(f'Borough Population and Fatality Rate(deaths/number of cases) for {age_filter} Age Group')
+    ax1.set_title(f'Borough Population and Fatality Rate(deaths/number of cases) for {filt} Age Group')
     ax1.legend(loc='upper left')
     ax2.legend(loc='upper right')
     return fig
-
-
 
 def app():
     st.title('First Diagram')
     
     st.header('Fatality, Count and Deaths per age Group Dataframe')
     st.write(clean_data())
-
-    st.write('Age filter')
-
-    st.header(f'Population, Density and Fatality in borough for {age_filter} group')
-    st.write(population_density_fatality())
     st.write('The Age filter option will isolate the corresponding row from the first dataframe that matches that age "subgroup"') 
     st.write('From the row selected: the columns containing the fatality rate of the 5 NYC boroughs will get added as a new column in the second dataframe.')
     
+    option = st.selectbox('Select a Borough', (age_filter))
+    if option == age_filter[0]:
+        st.header(f'Population, Density and Fatality in borough for {age_filter[0]} group')
+        st.write(density_bar(age_filter[0]))
+        st.write(population_bar(age_filter[0]))
+        st.write(population_density_fatality_filtered(age_filter[0]))
+    elif option == age_filter[1]:
+        st.header(f'Population, Density and Fatality in borough for {age_filter[1]} group')
+        st.write(density_bar(age_filter[1]))
+        st.write(population_bar(age_filter[1]))
+        st.write(population_density_fatality_filtered(age_filter[1]))
+    elif option == age_filter[2]:
+        st.header(f'Population, Density and Fatality in borough for {age_filter[2]} group')
+        st.write(density_bar(age_filter[2]))
+        st.write(population_bar(age_filter[2]))
+        st.write(population_density_fatality_filtered(age_filter[2]))
+    elif option == age_filter[3]:
+        st.header(f'Population, Density and Fatality in borough for {age_filter[3]} group')
+        st.write(density_bar(age_filter[3]))
+        st.write(population_bar(age_filter[3]))
+        st.write(population_density_fatality_filtered(age_filter[3]))
+    elif option == age_filter[4]:
+        st.header(f'Population, Density and Fatality in borough for {age_filter[4]} group')
+        st.write(density_bar(age_filter[4]))
+        st.write(population_bar(age_filter[4]))
+        st.write(population_density_fatality_filtered(age_filter[4]))
+    elif option == age_filter[5]:
+        st.header(f'Population, Density and Fatality in borough for {age_filter[5]} group')
+        st.write(density_bar(age_filter[5]))
+        st.write(population_bar(age_filter[5]))
+        st.write(population_density_fatality_filtered(age_filter[5]))
+    elif option == age_filter[6]:
+        st.header(f'Population, Density and Fatality in borough for {age_filter[6]} group')
+        st.write(density_bar(age_filter[6]))
+        st.write(population_bar(age_filter[6]))
+        st.write(population_density_fatality_filtered(age_filter[6]))
+    elif option == age_filter[7]:
+        st.header(f'Population, Density and Fatality in borough for {age_filter[7]} group')
+        st.write(density_bar(age_filter[7]))
+        st.write(population_bar(age_filter[7]))
+        st.write(population_density_fatality_filtered(age_filter[7]))
+    else:
+        st.header(f'Population, Density and Fatality in borough for {age_filter[8]} group')
+        st.write(density_bar(age_filter[8]))
+        st.write(population_bar(age_filter[8]))
+        st.write(population_density_fatality_filtered(age_filter[8]))
+
     st.subheader('Figure 1.1 Description')
     st.write('In the first pie chart we are exploring the population of the five NYC boroughs. Here we can see the "Queens" and "Brooklyn" have the highest population with 2,648,452 and 2,330,295 respectively.')
     st.pyplot(pie_1())
@@ -158,7 +216,7 @@ def app():
     st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
     st.write("This pattern could be a result of other socioeconomic factors that we aren't taking into consideration in this research.")
     st.write(exp_res1())
-    st.pyplot(density_bar())
-    st.subheader('Figure 1.4 Description')
-    st.write('From ')
-    st.pyplot(population_bar())
+    # st.pyplot(density_bar())
+    # st.subheader('Figure 1.4 Description')
+    # st.write('From ')
+    # st.pyplot(population_bar())
