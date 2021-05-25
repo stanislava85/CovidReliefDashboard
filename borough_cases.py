@@ -48,7 +48,7 @@ def graph():
 	return fig
 
 def app():
-    st.title('Third Diagram')
+    st.title('Number of Cases vs Total Population')
 
     st.write(join())
     st.write('In this diagram we are representing the correleation between Total Population and\

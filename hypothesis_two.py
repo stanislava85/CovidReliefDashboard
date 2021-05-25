@@ -125,11 +125,19 @@ def density_bar(filtration):
     return fig
 
 def exp_res1():
-    data = [['Manhattan','Brooklyn','Bronx', 'Queens', 'SI'], 
-    ['Queens','Bronx','Brooklyn','SI','Manhattan']]
+    data = [['Manhattan','Brooklyn','Bronx', 'Queens', 'Staten Island'], 
+    ['Bronx','Brooklyn','Queens','Staten Island','Manhattan']]
     index = ['Expected', 'Result']
     df = pd.DataFrame(data, index=index)
     return df.transpose()
+
+def exp_res2():
+    data = [['Brooklyn','Queens','Manhattan','Bronx','Staten Island'], 
+    ['Bronx','Brooklyn','Queens','Staten Island','Manhattan']]
+    index = ['Expected', 'Result']
+    df = pd.DataFrame(data, index=index)
+    return df.transpose()
+
 
 def population_bar(filtration):
     filt = filtration
@@ -151,80 +159,158 @@ def population_bar(filtration):
     return fig
 
 def app():
-    st.title('First Diagram')
+    st.title('Second Hypothesis:')
+    st.subheader("Also,there is a direct correlation between the fataly rate and density of borough for the 75+ age group. A 75+ person living in a denser borough will have a higher chance of exposure and have a higher fatality than another 75+ person living in a less dense borough.")
     
     st.header('Fatality, Count and Deaths per age Group Dataframe')
     st.write(clean_data())
+
+    st.subheader('Introduction')
+    st.write('Based on our second hypothesis, and as seen in figure 1.1, we are expecting Manhattan and Queens to have the highest fatality rates because a 75+ person living in a denser borough will have a higher chance of exposure and have a higher fatality than another 75+ person living in a less dense borough.')
+
+    col1, col2 = st.beta_columns(2)
+
+
+
+    with col1:
+        st.subheader('Figure 2.1 Description')
+        st.write('From this pie chart we can conclude that the density is highest in manhattan out of the five NYC boroughs with 71,760 residents per square mile and the second most dense borough is Brooklyn with 37,397 per square mile.')
+        st.pyplot(pie_2())
+    
+    with col2:
+        st.subheader('Figure 2.2 Description')
+        st.write('In the first pie chart we are exploring the population of the five NYC boroughs. Here we can see the "Queens" and "Brooklyn" have the highest population with 2,648,452 and 2,330,295 respectively.')
+        st.pyplot(pie_1())
+
+    st.header('Analysis:')
+
     st.write('The Age filter option will isolate the corresponding row from the first dataframe that matches that age "subgroup"') 
     st.write('From the row selected: the columns containing the fatality rate of the 5 NYC boroughs will get added as a new column in the second dataframe.')
     
-    st.subheader('Figure 1.1 Description')
-    st.write('In the first pie chart we are exploring the population of the five NYC boroughs. Here we can see the "Queens" and "Brooklyn" have the highest population with 2,648,452 and 2,330,295 respectively.')
-    st.pyplot(pie_1())
-    st.subheader('Figure 1.2 Description')
-    st.write('From this pie chart we can conclude that the density is highest in manhattan out of the five NYC boroughs with 71,760 residents per square mile and the second most dense borough is Brooklyn with 37,397 per square mile. Based on our second hypothesis, we are expecting manhattan and queens to have the highest fatality rates because 75+ person living in a denser borough will have a higher chance of exposure and have a higher fatality than another 75+ person living in a less dense borough.')
-    st.pyplot(pie_2())
-    st.subheader('Figure 1.3 Description')
-    st.write("In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the 75+ age group, however our graphs don't supprt this statement.")
-    st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
-    st.write("This pattern could be a result of other socioeconomic factors that we aren't taking into consideration in this research.")
-    st.write(exp_res1())
-    
-    option = st.selectbox('Select a Borough', (age_filter))
+    option = st.selectbox('Select an Age', (age_filter))
     if option == age_filter[0]:
         st.header(f'Population, Density and Fatality in borough for {age_filter[0]} group')
         st.write(population_density_fatality_filtered(age_filter[0]))
-        st.subheader('Figure 1.3 Description')
-        st.write("In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the {age_filter[0]} age group, however our graphs don't supprt this statement.")
-        st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
-        st.write("This pattern could be a result of other socioeconomic factors that we aren't taking into consideration in this research.")
+        st.subheader('Figure 2.3 Description')
+        st.write(f"In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the {age_filter[0]} age group, however our graphs don't supprt this statement.")
+        st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts Bronx and Brooklyn with a higher fatality even though they are less dense.')
+        st.write("This pattern could be a result of other socioeconomic factors, such as more famoly members having to live together because of low income household, that we aren't taking into consideration in this research.")
+        st.write(exp_res1())
         st.write(density_bar(age_filter[0]))
-        st.subheader('Figure 1.4 Description')
-        st.write('EXAMPLE PLACEHOLDER DESCRIPTION TEXT')
+        st.subheader('Figure 2.4 Description')
+        st.write(f"For our second bar chart, we decided to see if population would have a better correlation with fatality of the {age_filter[0]} age group, however we didn't find that to be the case. There was more similarity between population and fatality then it was with density and fatality but it was still not similar enough to conclude any correlation.")
+        st.write('For the most populated boroughs, Brooklyn and Queens we were expecting the highest fataly rate however our results puts Bronx and Brooklyn with a higher fatality rate.')
+        st.write(exp_res2())
         st.write(population_bar(age_filter[0]))
     elif option == age_filter[1]:
         st.header(f'Population, Density and Fatality in borough for {age_filter[1]} group')
-        st.write(density_bar(age_filter[1]))
-        st.write(population_bar(age_filter[1]))
         st.write(population_density_fatality_filtered(age_filter[1]))
+        st.subheader('Figure 2.3 Description')
+        st.write(f"In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the {age_filter[1]} age group, however our graphs don't supprt this statement.")
+        st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
+        st.write("This pattern could be a result of other socioeconomic factors, such as more famoly members having to live together because of low income household, that we aren't taking into consideration in this research.")
+        st.write(exp_res1())       
+        st.write(density_bar(age_filter[1]))
+        st.subheader('Figure 2.4 Description')
+        st.write(f"For our second bar chart, we decided to see if population would have a better correlation with fatality of the {age_filter[1]} age group, however we didn't find that to be the case. There was more similarity between population and fatality then it was with density and fatality but it was still not similar enough to conclude any correlation.")
+        st.write('For the most populated boroughs, Brooklyn and Queens we were expecting the highest fataly rate however our results puts Bronx and Brooklyn with a higher fatality rate.')
+        st.write(exp_res2())
+        st.write(population_bar(age_filter[1]))
     elif option == age_filter[2]:
         st.header(f'Population, Density and Fatality in borough for {age_filter[2]} group')
-        st.write(density_bar(age_filter[2]))
-        st.write(population_bar(age_filter[2]))
         st.write(population_density_fatality_filtered(age_filter[2]))
+        st.subheader('Figure 2.3 Description')
+        st.write(f"In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the {age_filter[2]} age group, however our graphs don't supprt this statement.")
+        st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
+        st.write("This pattern could be a result of other socioeconomic factors, such as more famoly members having to live together because of low income household, that we aren't taking into consideration in this research.")
+        st.write(exp_res1())  
+        st.write(density_bar(age_filter[2]))
+        st.subheader('Figure 2.4 Description')
+        st.write(f"For our second bar chart, we decided to see if population would have a better correlation with fatality of the {age_filter[2]} age group, however we didn't find that to be the case. There was more similarity between population and fatality then it was with density and fatality but it was still not similar enough to conclude any correlation.")
+        st.write('For the most populated boroughs, Brooklyn and Queens we were expecting the highest fataly rate however our results puts Bronx and Brooklyn with a higher fatality rate.')
+        st.write(exp_res2())
+        st.write(population_bar(age_filter[2]))
     elif option == age_filter[3]:
         st.header(f'Population, Density and Fatality in borough for {age_filter[3]} group')
+        st.write(population_density_fatality_filtered(age_filter[3]))    
+        st.subheader('Figure 2.3 Description')
+        st.write(f"In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the {age_filter[3]} age group, however our graphs don't supprt this statement.")
+        st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
+        st.write("This pattern could be a result of other socioeconomic factors, such as more famoly members having to live together because of low income household, that we aren't taking into consideration in this research.")
+        st.write(exp_res1()) 
         st.write(density_bar(age_filter[3]))
+        st.subheader('Figure 2.4 Description')
+        st.write(f"For our second bar chart, we decided to see if population would have a better correlation with fatality of the {age_filter[3]} age group, however we didn't find that to be the case. There was more similarity between population and fatality then it was with density and fatality but it was still not similar enough to conclude any correlation.")
+        st.write('For the most populated boroughs, Brooklyn and Queens we were expecting the highest fataly rate however our results puts Bronx and Brooklyn with a higher fatality rate.')
+        st.write(exp_res2())
         st.write(population_bar(age_filter[3]))
-        st.write(population_density_fatality_filtered(age_filter[3]))
     elif option == age_filter[4]:
         st.header(f'Population, Density and Fatality in borough for {age_filter[4]} group')
-        st.write(density_bar(age_filter[4]))
-        st.write(population_bar(age_filter[4]))
         st.write(population_density_fatality_filtered(age_filter[4]))
+        st.subheader('Figure 2.3 Description')
+        st.write(f"In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the {age_filter[4]} age group, however our graphs don't supprt this statement.")
+        st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
+        st.write("This pattern could be a result of other socioeconomic factors, such as more famoly members having to live together because of low income household, that we aren't taking into consideration in this research.")
+        st.write(exp_res1()) 
+        st.write(density_bar(age_filter[4]))
+        st.subheader('Figure 2.4 Description')
+        st.write(f"For our second bar chart, we decided to see if population would have a better correlation with fatality of the {age_filter[4]} age group, however we didn't find that to be the case. There was more similarity between population and fatality then it was with density and fatality but it was still not similar enough to conclude any correlation.")
+        st.write('For the most populated boroughs, Brooklyn and Queens we were expecting the highest fataly rate however our results puts Bronx and Brooklyn with a higher fatality rate.')
+        st.write(exp_res2())
+        st.write(population_bar(age_filter[4]))
     elif option == age_filter[5]:
         st.header(f'Population, Density and Fatality in borough for {age_filter[5]} group')
-        st.write(density_bar(age_filter[5]))
-        st.write(population_bar(age_filter[5]))
         st.write(population_density_fatality_filtered(age_filter[5]))
+        st.subheader('Figure 2.3 Description')
+        st.write(f"In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the {age_filter[5]} age group, however our graphs don't supprt this statement.")
+        st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
+        st.write("This pattern could be a result of other socioeconomic factors, such as more famoly members having to live together because of low income household, that we aren't taking into consideration in this research.")
+        st.write(exp_res1())     
+        st.write(density_bar(age_filter[5]))
+        st.subheader('Figure 2.4 Description')
+        st.write(f"For our second bar chart, we decided to see if population would have a better correlation with fatality of the {age_filter[5]} age group, however we didn't find that to be the case. There was more similarity between population and fatality then it was with density and fatality but it was still not similar enough to conclude any correlation.")
+        st.write('For the most populated boroughs, Brooklyn and Queens we were expecting the highest fataly rate however our results puts Bronx and Brooklyn with a higher fatality rate.')
+        st.write(exp_res2())
+        st.write(population_bar(age_filter[5]))
     elif option == age_filter[6]:
         st.header(f'Population, Density and Fatality in borough for {age_filter[6]} group')
-        st.write(density_bar(age_filter[6]))
-        st.write(population_bar(age_filter[6]))
         st.write(population_density_fatality_filtered(age_filter[6]))
+        st.subheader('Figure 2.3 Description')
+        st.write(f"In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the {age_filter[6]} age group, however our graphs don't supprt this statement.")
+        st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
+        st.write("This pattern could be a result of other socioeconomic factors, such as more famoly members having to live together because of low income household, that we aren't taking into consideration in this research.")
+        st.write(exp_res1()) 
+        st.write(density_bar(age_filter[6]))
+        st.subheader('Figure 2.4 Description')
+        st.write(f"For our second bar chart, we decided to see if population would have a better correlation with fatality of the {age_filter[6]} age group, however we didn't find that to be the case. There was more similarity between population and fatality then it was with density and fatality but it was still not similar enough to conclude any correlation.")
+        st.write('For the most populated boroughs, Brooklyn and Queens we were expecting the highest fataly rate however our results puts Bronx and Brooklyn with a higher fatality rate.')
+        st.write(exp_res2())
+        st.write(population_bar(age_filter[6]))
     elif option == age_filter[7]:
         st.header(f'Population, Density and Fatality in borough for {age_filter[7]} group')
-        st.write(density_bar(age_filter[7]))
-        st.write(population_bar(age_filter[7]))
         st.write(population_density_fatality_filtered(age_filter[7]))
+        st.subheader('Figure 2.3 Description')
+        st.write(f"In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the {age_filter[7]} age group, however our graphs don't supprt this statement.")
+        st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
+        st.write("This pattern could be a result of other socioeconomic factors, such as more famoly members having to live together because of low income household, that we aren't taking into consideration in this research.")
+        st.write(exp_res1()) 
+        st.write(density_bar(age_filter[7]))
+        st.subheader('Figure 2.4 Description')
+        st.write(f"For our second bar chart, we decided to see if population would have a better correlation with fatality of the {age_filter[7]} age group, however we didn't find that to be the case. There was more similarity between population and fatality then it was with density and fatality but it was still not similar enough to conclude any correlation.")
+        st.write('For the most populated boroughs, Brooklyn and Queens we were expecting the highest fataly rate however our results puts Bronx and Brooklyn with a higher fatality rate.')
+        st.write(exp_res2())
+        st.write(population_bar(age_filter[7]))
     else:
         st.header(f'Population, Density and Fatality in borough for {age_filter[8]} group')
-        st.write(density_bar(age_filter[8]))
-        st.write(population_bar(age_filter[8]))
         st.write(population_density_fatality_filtered(age_filter[8]))
-
-    
-    # st.pyplot(density_bar())
-    # st.subheader('Figure 1.4 Description')
-    # st.write('From ')
-    # st.pyplot(population_bar())
+        st.subheader('Figure 2.3 Description')
+        st.write(f"In our second hypothesis we stated that there is a direct correlation between the fataly rate and density of borough for the {age_filter[8]} age group, however our graphs don't supprt this statement.")
+        st.write('The chart below contradicts our hypothesis.For the most dense boroughs, Manhattan and Brooklyn we were expecting the highest fataly rate however our results puts queens and bronx with a higher fatality even though they are less dense.')
+        st.write("This pattern could be a result of other socioeconomic factors, such as more famoly members having to live together because of low income household, that we aren't taking into consideration in this research.")
+        st.write(exp_res1()) 
+        st.write(density_bar(age_filter[8]))
+        st.subheader('Figure 2.4 Description')
+        st.write(f"For our second bar chart, we decided to see if population would have a better correlation with fatality of the {age_filter[8]} age group, however we didn't find that to be the case. There was more similarity between population and fatality then it was with density and fatality but it was still not similar enough to conclude any correlation.")
+        st.write('For the most populated boroughs, Brooklyn and Queens we were expecting the highest fataly rate however our results puts Bronx and Brooklyn with a higher fatality rate.')
+        st.write(exp_res2())
+        st.write(population_bar(age_filter[8]))
