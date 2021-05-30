@@ -77,8 +77,10 @@ def autopct_format(values):
     def my_format(pct):
         total = sum(values)
         val = int(round(pct*total/100.0))
+        # val = val / 1000000
         return '{v:d}'.format(v=val)
     return my_format
+
 total = population_density_fatality()
 def pie_1():
     #transforming pie shares
