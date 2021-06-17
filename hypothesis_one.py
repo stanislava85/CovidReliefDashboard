@@ -51,7 +51,7 @@ def bar_1(data1,data2,boro_initials):
 
 def app():
     st.title('First Hypothesis:')
-    st.subheader("The infection rate and fatality rate in the 75+ age group will be the highest fatality(deaths/total cases) because they are in the older age group.")
+    st.subheader('The infection (number of cases) and fatality rate(deaths/total cases) in the 75 + age group will be the highest because this is the oldest age group.')
     
     st.header('Fatality, Count and Deaths per age Group Dataframe')
     st.write(clean_data())
@@ -64,11 +64,11 @@ def app():
     option = st.selectbox('Select a Borough', (boro_names))
 
     st.subheader('Figure 1.1 Description')
-    st.write('For this bar diagram we are showing the correlation between the Number of\
-    	COVID-19 Cases and the Fatality Rate per Age Group. We have estimated the Fatality Rate\
-    	by dividing the Death Cases to the Number of Total Case Count per each Borough and Age Group.')
-    st.write("This diagram proves our First Hypothesis where we have stated that the Fatality Rate increases as people's age increase it's correct.For instance, we see that the highest number of Covid-19 cases is seen in the 25-34 age group with over 40,000 cases. However, the fatality rate in this group is one of the lowest for any age group. On the other hand, for the 75+ age group, the number of covid-19 cases is lower but the fatality rate is the highest compared to any other age group. What this means is that although the 75+ age group might not have as much cases of covid,  WHEN they do get infected, they are 0.25% more likely to die of it.")
-
+    st.write('For this bar diagram we are showing the comparison between the Number of COVID-19 Cases and the Fatality Rate per Age Group. We have estimated the Fatality Rate by dividing the Death Cases to the Number of Total Case Count per each Borough and Age Group.')
+    st.write("This diagram only partially proves our First Hypothesis where we have stated that the Fatality Rate increases in the older generation (75th age group).")
+    st.write("For each neighborhood, we see that the fatality rate is the highest in the oldest age gorup, 75+. This trend is observed in all of the NYC boroughs.")
+    st.write("However,we originally hypothesized that the number of cases would increase in the 75+ age group but is not what was observed. For instance, we see that the highest number of Covid-19 cases is seen in the 25-34 age group with over 40,000 cases. This is most likely because we didn't take the census into consideration and we assumed that the distribution between the different age groups would be the same.")
+    st.write("In conclusion, this diagram only proves that the highest fatality rate is seen in the older age group, 75+. What this means is that although the 75+ age group might not have as much cases of covid,  WHEN they do get infected, they are 0.25% more likely to die of it.")
 
     if option == boro_names[0]:
         num = 0

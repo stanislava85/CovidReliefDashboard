@@ -18,7 +18,7 @@ def app():
 
     st.subheader('Proposed hypothesis 1:')
 
-    st.write('The infection rate and fatality rate in the 75 + age group will be the highest fatality(deaths/total cases) because they are in the older age group.')
+    st.write('The infection (number of cases) and fatality rate(deaths/total cases) in the 75 + age group will be the highest because this is the oldest age group.')
 
     st.subheader('Proposed hypothesis 2:')
 
