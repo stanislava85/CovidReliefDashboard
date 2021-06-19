@@ -33,6 +33,20 @@ In order to run this application locally on you machine you would need to follow
 
 <br>
 
+<div align="center"><img src="./img/app.gif"></div>
+
+<br>
+
+<div align="center"><img src="./img/home_screenshot.png"></div>
+
+<br>
+
+<div align="center"><img src="./img/totals_screenshot.png"></div>
+
+<br>
+
+<div align="center"><img src="./img/boro_screenshot.png"></div>
+
 # Technology Stack
 In this analysis, we used python as the primary programming language because of its rich palette of tools that make data analysis a cinch. Some of the packages we used are
 | Library | Description |
