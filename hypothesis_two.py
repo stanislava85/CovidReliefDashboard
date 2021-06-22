@@ -162,7 +162,7 @@ def population_bar(filtration):
 
 def app():
     st.title('Second Hypothesis:')
-    st.subheader("Also,there is a direct correlation between the fataly rate and density of borough for the 75+ age group. A 75+ person living in a denser borough will have a higher chance of exposure and have a higher fatality than another 75+ person living in a less dense borough.")
+    st.subheader("Also,there is a direct correlation between the fatality rate and density of borough for the 75+ age group. A 75+ person living in a denser borough will have a higher chance of exposure and have a higher fatality than another 75+ person living in a less dense borough.")
     
     st.header('Fatality, Count and Deaths per age Group Dataframe')
     st.write(clean_data())
@@ -179,7 +179,7 @@ def app():
     
     with col2:
         st.subheader('Figure 2.2 Description')
-        st.write('In the first pie chart we are exploring the population of the five NYC boroughs. Here we can see that "Queens" and "Brooklyn" have the highest population with 2,648,452 residents and 2,330,295 residents respectively.')
+        st.write('In the second pie chart we are exploring the population of the five NYC boroughs. Here we can see that "Queens" and "Brooklyn" have the highest population with 2,648,452 residents and 2,330,295 residents respectively.')
         st.pyplot(pie_1())
 
     st.header('Analysis:')
